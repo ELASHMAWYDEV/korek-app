@@ -19,14 +19,15 @@ class SplashController extends GetxController {
     });
 
     Future.delayed(const Duration(milliseconds: 6500), () async {
-      // Get.find<StorageService>()
-      //     .triggerOnce(StorageKeys.hasSeenIntroScreens)
-      //     .then((value) => Get.offAndToNamed("/intro"));
-      // .catchError((e) => Get.offAndToNamed("/home"));
-
-      if (Get.find<StorageService>().token != "") {
-        return Get.offAndToNamed("/main");
-      }
+      Get.find<StorageService>()
+          .triggerOnce(StorageKeys.hasSeenIntroScreens)
+          .then((value) => Get.offAndToNamed("/intro"))
+          .catchError((e) {
+        if (Get.find<StorageService>().token != "") {
+          return Get.offAndToNamed("/main");
+        }
+        Get.offAndToNamed("/login");
+      });
 
       Get.offAndToNamed("/intro");
     });

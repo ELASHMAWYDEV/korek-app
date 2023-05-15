@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:korek_app/ui/components/bottom_navigation.dart';
+import 'package:korek_app/ui/components/header.dart';
 import 'package:korek_app/ui/controllers/navigation_controller.dart';
 
 class MainScreen extends StatefulWidget {
@@ -17,7 +18,14 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return GetBuilder<NavigationController>(builder: (_) {
       return Scaffold(
-          body: Stack(children: [_.activeChild, const BottomNavigation()]));
+          body: Column(
+        children: [
+          const Header(),
+          Expanded(
+              child:
+                  Stack(children: [_.activeChild, const BottomNavigation()])),
+        ],
+      ));
     });
   }
 }

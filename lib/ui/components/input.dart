@@ -3,16 +3,17 @@ import 'package:flutter/services.dart';
 import 'package:korek_app/utils/constants.dart';
 
 class Input extends StatelessWidget {
-  const Input({
-    super.key,
-    this.inputFormatters,
-    required this.placeholder,
-    this.controller,
-    this.starting,
-    this.ending,
-    this.isReadOnly = false,
-    this.onTap,
-  });
+  const Input(
+      {super.key,
+      this.inputFormatters,
+      required this.placeholder,
+      this.controller,
+      this.starting,
+      this.ending,
+      this.isReadOnly = false,
+      this.onTap,
+      this.borderRadius = 2,
+      this.padding = const EdgeInsets.all(0)});
 
   final List<TextInputFormatter>? inputFormatters;
   final String? placeholder;
@@ -21,6 +22,8 @@ class Input extends StatelessWidget {
   final Widget? ending;
   final bool isReadOnly;
   final Function()? onTap;
+  final double borderRadius;
+  final EdgeInsets padding;
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +31,9 @@ class Input extends StatelessWidget {
       onTap: onTap,
       child: Container(
         height: 50,
+        padding: padding,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(2),
+          borderRadius: BorderRadius.circular(borderRadius),
           border: Border.all(color: kBlackColor.withOpacity(0.1)),
         ),
         child: Row(
