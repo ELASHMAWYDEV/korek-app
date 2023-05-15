@@ -1,5 +1,7 @@
 import 'package:korek_app/ui/screens/intro/intro_screen.dart';
 import 'package:korek_app/ui/screens/login/login_screen.dart';
+import 'package:korek_app/ui/screens/main/main_screen.dart';
+import 'package:korek_app/ui/screens/register/register_screen.dart';
 import 'package:korek_app/ui/screens/splash/splash_screen.dart';
 import 'package:get/get.dart';
 
@@ -10,5 +12,7 @@ class AppRoutes {
     GetPage(name: "/splash", page: () => const SplashScreen()),
     GetPage(name: "/intro", page: () => IntroScreen()),
     GetPage(name: "/login", page: () => const LoginScreen()),
+    GetPage(name: "/register", page: () => const RegisterScreen()),
+    GetPage(name: "/main", page: () => const MainScreen()),
   ];
 }

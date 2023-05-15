@@ -18,24 +18,17 @@ class SplashController extends GetxController {
       if (timeElapsed.value >= 1500) update();
     });
 
-    Future.delayed(const Duration(milliseconds: 4500), () async {
-      //Register the user
-      final bool isRegistered = await register();
+    Future.delayed(const Duration(milliseconds: 6500), () async {
+      // Get.find<StorageService>()
+      //     .triggerOnce(StorageKeys.hasSeenIntroScreens)
+      //     .then((value) => Get.offAndToNamed("/intro"));
+      // .catchError((e) => Get.offAndToNamed("/home"));
 
-      if (isRegistered) {
-        // Get.find<StorageService>()
-        //     .triggerOnce(StorageKeys.hasSeenIntroScreens)
-        //     .then((value) => Get.offAndToNamed("/intro"));
-        // .catchError((e) => Get.offAndToNamed("/home"));
-
-        Get.offAndToNamed("/intro");
-      } else {
-        // @TODO: handle if registration is broken, show no internet connection modal for ex.
-        AlertPromptBox.showError(
-            error: "Please check your internet connection");
+      if (Get.find<StorageService>().token != "") {
+        return Get.offAndToNamed("/main");
       }
+
+      Get.offAndToNamed("/intro");
     });
   }
-
-  Future<bool> register() async => await authService.register();
 }

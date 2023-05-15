@@ -81,7 +81,7 @@ class _IntroScreenState extends State<IntroScreen> {
               MainButton(
                 onPressed: () {
                   if (_.activeIndex == _.introSlides.length - 1) {
-                    Get.offAllNamed("/splash");
+                    Get.offAllNamed("/register");
                   } else {
                     _.sliderController.nextPage(
                         duration: const Duration(milliseconds: 300),

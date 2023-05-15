@@ -35,8 +35,8 @@ class OtpModal extends StatelessWidget {
                   SizedBox(
                     width: 50,
                     child: TextField(
-                      textInputAction: TextInputAction.previous,
                       controller: _.otp1InputController,
+                      focusNode: _.otp1Focus,
                       inputFormatters: [LengthLimitingTextInputFormatter(1)],
                       decoration: InputDecoration(
                         border: OutlineInputBorder(
@@ -52,8 +52,8 @@ class OtpModal extends StatelessWidget {
                   SizedBox(
                     width: 50,
                     child: TextField(
-                      textInputAction: TextInputAction.next,
                       controller: _.otp2InputController,
+                      focusNode: _.otp2Focus,
                       inputFormatters: [LengthLimitingTextInputFormatter(1)],
                       decoration: InputDecoration(
                         focusColor: kBlackColor,
@@ -70,8 +70,8 @@ class OtpModal extends StatelessWidget {
                   SizedBox(
                     width: 50,
                     child: TextField(
-                      textInputAction: TextInputAction.next,
                       controller: _.otp3InputController,
+                      focusNode: _.otp3Focus,
                       inputFormatters: [LengthLimitingTextInputFormatter(1)],
                       decoration: InputDecoration(
                         border: OutlineInputBorder(
@@ -87,8 +87,8 @@ class OtpModal extends StatelessWidget {
                   SizedBox(
                     width: 50,
                     child: TextField(
-                      textInputAction: TextInputAction.done,
                       controller: _.otp4InputController,
+                      focusNode: _.otp4Focus,
                       inputFormatters: [LengthLimitingTextInputFormatter(1)],
                       decoration: InputDecoration(
                         border: OutlineInputBorder(
@@ -103,7 +103,7 @@ class OtpModal extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Row(
