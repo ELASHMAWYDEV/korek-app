@@ -11,7 +11,7 @@ class SearchBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<StoreController>(builder: (_) {
       return Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+        padding: const EdgeInsets.symmetric(vertical: 15),
         child: Input(
             placeholder: "Search",
             borderRadius: 50,
