@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:korek_app/ui/components/main_button.dart';
 import 'package:korek_app/ui/screens/store/components/item_box.dart';
 import 'package:korek_app/utils/constants.dart';
 
@@ -13,14 +14,16 @@ class CartModal extends StatefulWidget {
 }
 
 class _CartModalState extends State<CartModal> {
+  String? paymentMethod;
+
   @override
   Widget build(BuildContext context) {
     return Dialog(
       backgroundColor: kWhiteColor,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
       child: ConstrainedBox(
-        constraints:
-            BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.7),
+        constraints: BoxConstraints(
+            maxHeight: MediaQuery.of(context).size.height * 0.78),
         child: SizedBox(
           width: MediaQuery.of(context).size.width,
           child: Padding(
@@ -54,26 +57,36 @@ class _CartModalState extends State<CartModal> {
                 SizedBox(
                   height: 30,
                 ),
-                ConstrainedBox(
-                  constraints: BoxConstraints(
-                      maxHeight: MediaQuery.of(context).size.height * 0.4),
-                  child: SingleChildScrollView(
-                    padding: EdgeInsets.symmetric(horizontal: 15),
-                    child: Column(children: [
-                      ...[1, 2, 3, 4, 5, 6]
-                          .map((item) => Padding(
-                                padding: const EdgeInsets.only(bottom: 20),
-                                child: ItemBox(
-                                  isSmall: true,
-                                  isCartItem: true,
-                                ),
-                              ))
-                          .toList()
-                    ]),
+                Container(
+                  decoration: BoxDecoration(color: kWhiteColor, boxShadow: [
+                    BoxShadow(
+                      color: kGrayColor.withOpacity(0.2),
+                      spreadRadius: 2,
+                      blurRadius: 5,
+                      offset: Offset(0, 4),
+                    )
+                  ]),
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                        maxHeight: MediaQuery.of(context).size.height * 0.4),
+                    child: SingleChildScrollView(
+                      padding: EdgeInsets.symmetric(horizontal: 15),
+                      child: Column(children: [
+                        ...[1, 2, 3, 4, 5, 6]
+                            .map((item) => Padding(
+                                  padding: const EdgeInsets.only(bottom: 20),
+                                  child: ItemBox(
+                                    isSmall: true,
+                                    isCartItem: true,
+                                  ),
+                                ))
+                            .toList()
+                      ]),
+                    ),
                   ),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 30,
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -81,12 +94,84 @@ class _CartModalState extends State<CartModal> {
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [Text("Total"), Text("460 L.E")],
+                        children: [
+                          Text(
+                            "Total",
+                            style: TextStyle(fontSize: 22),
+                          ),
+                          Text(
+                            "460 L.E",
+                            style: TextStyle(
+                                fontSize: 22, fontWeight: FontWeight.w600),
+                          )
+                        ],
                       ),
                       Divider(
                         indent: 40,
                         endIndent: 40,
-                      )
+                        height: 30,
+                      ),
+                      Text(
+                        "Select payment",
+                        style: TextStyle(fontSize: 12),
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Row(
+                            children: [
+                              Radio(
+                                  value: "wallet",
+                                  groupValue: paymentMethod,
+                                  activeColor: kPrimaryColor,
+                                  toggleable: true,
+                                  splashRadius: 20,
+                                  onChanged: (value) {
+                                    paymentMethod = value;
+                                    setState(() {});
+                                  }),
+                              Text(
+                                "Wallet",
+                                style: TextStyle(
+                                    color: paymentMethod == "wallet"
+                                        ? kBlackColor
+                                        : kGrayDarkColor),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Radio(
+                                  value: "cash",
+                                  groupValue: paymentMethod,
+                                  activeColor: kPrimaryColor,
+                                  toggleable: true,
+                                  splashRadius: 20,
+                                  onChanged: (value) {
+                                    paymentMethod = value;
+                                    setState(() {});
+                                  }),
+                              Text(
+                                "Cash",
+                                style: TextStyle(
+                                    color: paymentMethod == "cash"
+                                        ? kBlackColor
+                                        : kGrayDarkColor),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      MainButton(
+                          onPressed: () {},
+                          isActive: paymentMethod != null,
+                          text: "Confirm Order")
                     ],
                   ),
                 ),

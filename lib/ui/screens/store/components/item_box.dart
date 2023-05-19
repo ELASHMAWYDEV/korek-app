@@ -8,10 +8,16 @@ import 'package:korek_app/utils/constants.dart';
 import 'add_to_cart_modal.dart';
 
 class ItemBox extends StatelessWidget {
-  const ItemBox({super.key, this.isSmall = false, this.isCartItem = false});
+  const ItemBox({
+    super.key,
+    this.isSmall = false,
+    this.isCartItem = false,
+    this.isFavorite = false,
+  });
 
   final bool isSmall;
   final bool isCartItem;
+  final bool isFavorite;
 
   @override
   Widget build(BuildContext context) {
