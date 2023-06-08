@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:korek_app/ui/screens/chat/chat_screen.dart';
 import 'package:korek_app/ui/screens/home/home_screen.dart';
+import 'package:korek_app/ui/screens/order_history/order_history_screen.dart';
 import 'package:korek_app/ui/screens/requests/requests_screen.dart';
 import 'package:korek_app/ui/screens/services/services_screen.dart';
 import 'package:korek_app/ui/screens/store/store_screen.dart';
@@ -22,6 +23,7 @@ class NavigationController extends GetxController {
     "chat": const ChatScreen(),
     "services": const ServicesScreen(),
     "store": const StoreScreen(),
+    "order-history": const OrderHistoryScreen(),
   };
 
   void navigateTo(String screen) {

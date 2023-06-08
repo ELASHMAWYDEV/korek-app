@@ -24,7 +24,7 @@ class FirstStep extends StatelessWidget {
           const SizedBox(height: 15),
           Input(
               placeholder: "Date of Birth",
-              controller: _.dobInputController,
+              controller: _.emailInputController,
               isReadOnly: true,
               ending: const Padding(
                 padding: EdgeInsets.only(right: 12.0),
@@ -52,7 +52,7 @@ class FirstStep extends StatelessWidget {
                       );
                     }).then((value) {
                   if (value != null) {
-                    _.dobInputController.text =
+                    _.emailInputController.text =
                         "${value.day}/${value.month}/${value.year}";
                   }
                 });
@@ -69,7 +69,7 @@ class FirstStep extends StatelessWidget {
             },
             text: "Verify My Number",
             isActive: _.nameInputController.text != "" &&
-                _.dobInputController.text != "" &&
+                _.emailInputController.text != "" &&
                 _.addressInputController.text != "" &&
                 _.phoneInputController.text != "",
           ),

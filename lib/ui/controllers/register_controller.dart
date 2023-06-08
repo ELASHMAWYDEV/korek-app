@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:korek_app/data/models/services/auth_register_model.dart';
 import 'package:korek_app/data/services/auth_service.dart';
 
 class RegisterController extends GetxController {
@@ -8,7 +9,7 @@ class RegisterController extends GetxController {
   int currentStep = 0;
 
   final TextEditingController nameInputController = TextEditingController();
-  final TextEditingController dobInputController = TextEditingController();
+  final TextEditingController emailInputController = TextEditingController();
   final TextEditingController addressInputController = TextEditingController();
   final TextEditingController phoneInputController = TextEditingController();
   String? brand;
@@ -27,7 +28,7 @@ class RegisterController extends GetxController {
     nameInputController.addListener(() {
       update();
     });
-    dobInputController.addListener(() {
+    emailInputController.addListener(() {
       update();
     });
     addressInputController.addListener(() {
@@ -44,5 +45,20 @@ class RegisterController extends GetxController {
     });
   }
 
-  Future<bool> register() async => await authService.register();
+  Future<bool> register() async => await authService.register(AuthRegisterModel(
+      name: nameInputController.text,
+      email: emailInputController.text,
+      countryCode: "+20",
+      phoneNumber: phoneInputController.text,
+      password: password,
+      car: CarModel(
+          brand: brand ?? "",
+          model: model ?? "",
+          vendor: "",
+          year: int.tryParse(year) ?? 0,
+          plateNumber: plateNumberInputController.text,
+          chassisNumber: chassisNumberInputController.text,
+          licenseImageFront: "image.png",
+          licenseImageBack: "image.png",
+          carImage: "image.png")));
 }

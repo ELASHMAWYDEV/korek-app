@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class OrderHistory extends StatefulWidget {
-  const OrderHistory({super.key});
+class OrderHistoryScreen extends StatefulWidget {
+  const OrderHistoryScreen({super.key});
 
   @override
-  State<OrderHistory> createState() => _OrderHistoryState();
+  State<OrderHistoryScreen> createState() => _OrderHistoryScreenState();
 }
 
-class _OrderHistoryState extends State<OrderHistory> {
+class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -62,7 +62,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
                             image: "assets/images/services-icon.png",
                             title: "Services",
                             onPressed: () {
-                              _.navigateTo("services");
+                              _.navigateTo("order-history");
                             },
                           ),
                           BarButton(

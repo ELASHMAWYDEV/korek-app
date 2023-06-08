@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:korek_app/data/models/user_model.dart';
 import 'package:korek_app/utils/services/localization_service.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -11,7 +14,7 @@ abstract class StorageKeys {
   static const String token = "TOKEN";
   static const String activeLocale = "ACTIVE_LOCAL";
   static const String client = "CLIENT";
-  // static const String userData = "USER_DATA";
+  static const String userData = "USER_DATA";
   static const String hasSeenIntroScreens = "HAS_SEEN_INTRO_SCREENS";
 }
 
@@ -60,19 +63,19 @@ class StorageService extends GetxService {
     _prefs.setString(StorageKeys.activeLocale, activeLocal.toString());
   }
 
-  // //User Data
-  // UserModel? get userData {
-  //   return _prefs.getString(StorageKeys.userData) == null
-  //       ? null
-  //       : UserModel.fromJson(
-  //           jsonDecode(_prefs.getString(StorageKeys.userData)!));
-  // }
+  //User Data
+  UserModel? get userData {
+    return _prefs.getString(StorageKeys.userData) == null
+        ? null
+        : UserModel.fromJson(
+            jsonDecode(_prefs.getString(StorageKeys.userData)!));
+  }
 
-  // set userData(UserModel? userData) {
-  //   if (userData == null) {
-  //     _prefs.remove(StorageKeys.userData);
-  //   } else {
-  //     _prefs.setString(StorageKeys.userData, jsonEncode(userData.toJson()));
-  //   }
-  // }
+  set userData(UserModel? userData) {
+    if (userData == null) {
+      _prefs.remove(StorageKeys.userData);
+    } else {
+      _prefs.setString(StorageKeys.userData, jsonEncode(userData.toMap()));
+    }
+  }
 }

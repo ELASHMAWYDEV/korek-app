@@ -3,13 +3,12 @@ import 'package:korek_app/utils/constants.dart';
 import 'package:korek_app/utils/app_routes.dart';
 import 'package:korek_app/utils/services/api_service.dart';
 import 'package:korek_app/utils/services/connection_service.dart';
-// import 'package:korek_app/utils/services/firebase.dart';
 import 'package:korek_app/utils/services/localization_service.dart';
 import 'package:korek_app/utils/services/navigation_service.dart';
 import 'package:korek_app/utils/services/storage_service.dart';
 import 'package:korek_app/utils/translations/app_translations.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
