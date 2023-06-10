@@ -23,42 +23,15 @@ class FirstStep extends StatelessWidget {
           Input(placeholder: "Full Name", controller: _.nameInputController),
           const SizedBox(height: 15),
           Input(
-              placeholder: "Date of Birth",
-              controller: _.emailInputController,
-              isReadOnly: true,
-              ending: const Padding(
-                padding: EdgeInsets.only(right: 12.0),
-                child: Icon(Icons.calendar_month, color: Colors.grey, size: 24),
-              ),
-              onTap: () {
-                showDatePicker(
-                    context: context,
-                    initialDate: DateTime.now(),
-                    firstDate: DateTime(1900),
-                    lastDate: DateTime.now(),
-                    currentDate: DateTime.now(),
-                    builder: (BuildContext context, Widget? child) {
-                      return Theme(
-                        data: ThemeData.light().copyWith(
-                          colorScheme: const ColorScheme.light(
-                            primary: kPrimaryColor,
-                            onPrimary: Colors.white,
-                            surface: kPrimaryColor,
-                            onSurface: Colors.black,
-                          ),
-                          dialogBackgroundColor: Colors.white,
-                        ),
-                        child: child!,
-                      );
-                    }).then((value) {
-                  if (value != null) {
-                    _.emailInputController.text =
-                        "${value.day}/${value.month}/${value.year}";
-                  }
-                });
-              }),
+            placeholder: "Email",
+            controller: _.emailInputController,
+          ),
           const SizedBox(height: 15),
-          Input(placeholder: "Address", controller: _.addressInputController),
+          Input(
+            placeholder: "Password",
+            controller: _.passwordInputController,
+            obscureText: true,
+          ),
           const SizedBox(height: 15),
           PhoneNumberInput(controller: _.phoneInputController),
           const SizedBox(height: 30),
@@ -67,10 +40,10 @@ class FirstStep extends StatelessWidget {
               _.currentStep += 1;
               _.update();
             },
-            text: "Verify My Number",
+            text: "Next",
             isActive: _.nameInputController.text != "" &&
                 _.emailInputController.text != "" &&
-                _.addressInputController.text != "" &&
+                _.passwordInputController.text != "" &&
                 _.phoneInputController.text != "",
           ),
         ],

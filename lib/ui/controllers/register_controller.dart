@@ -10,8 +10,8 @@ class RegisterController extends GetxController {
 
   final TextEditingController nameInputController = TextEditingController();
   final TextEditingController emailInputController = TextEditingController();
-  final TextEditingController addressInputController = TextEditingController();
   final TextEditingController phoneInputController = TextEditingController();
+  final TextEditingController passwordInputController = TextEditingController();
   String? brand;
   String? model;
   String? year;
@@ -31,10 +31,10 @@ class RegisterController extends GetxController {
     emailInputController.addListener(() {
       update();
     });
-    addressInputController.addListener(() {
+    phoneInputController.addListener(() {
       update();
     });
-    phoneInputController.addListener(() {
+    passwordInputController.addListener(() {
       update();
     });
     plateNumberInputController.addListener(() {
@@ -50,12 +50,12 @@ class RegisterController extends GetxController {
       email: emailInputController.text,
       countryCode: "+20",
       phoneNumber: phoneInputController.text,
-      password: password,
+      password: passwordInputController.text,
       car: CarModel(
           brand: brand ?? "",
           model: model ?? "",
           vendor: "",
-          year: int.tryParse(year) ?? 0,
+          year: int.tryParse(year ?? "") ?? 0,
           plateNumber: plateNumberInputController.text,
           chassisNumber: chassisNumberInputController.text,
           licenseImageFront: "image.png",

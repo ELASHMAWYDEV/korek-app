@@ -67,8 +67,8 @@ class SecondStep extends StatelessWidget {
           height: 30,
         ),
         MainButton(
-          onPressed: () {
-            Get.offAllNamed("/home");
+          onPressed: () async {
+            await _.register();
           },
           text: "Register My Car",
           isActive: _.brand != null &&

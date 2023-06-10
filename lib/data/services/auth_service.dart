@@ -9,9 +9,9 @@ class AuthService extends Services {
         .request(Services.register, "POST",
             loaderEnabled: true, data: data.toMap())
         .then((data) {
-      if (data == null || data == false) {
-        return false;
-      }
+      // if (data == null || data == false) {
+      //   return false;
+      // }
 
       //Save access token & user data to storage
       // Get.find<StorageService>().token = data["accessToken"];

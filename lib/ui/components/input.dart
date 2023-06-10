@@ -11,6 +11,7 @@ class Input extends StatelessWidget {
       this.starting,
       this.ending,
       this.isReadOnly = false,
+      this.obscureText = false,
       this.onTap,
       this.borderRadius = 2,
       this.padding = const EdgeInsets.all(0)});
@@ -21,6 +22,7 @@ class Input extends StatelessWidget {
   final Widget? starting;
   final Widget? ending;
   final bool isReadOnly;
+  final bool obscureText;
   final Function()? onTap;
   final double borderRadius;
   final EdgeInsets padding;
@@ -44,6 +46,7 @@ class Input extends StatelessWidget {
                 controller: controller,
                 keyboardType: TextInputType.phone,
                 inputFormatters: inputFormatters,
+                obscureText: obscureText,
                 readOnly: isReadOnly,
                 decoration: InputDecoration(
                     hintText: placeholder,

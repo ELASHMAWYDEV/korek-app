@@ -20,7 +20,7 @@ const String kAppTitle = "Korek";
 String kFontFamilyPrimary = "Montserrat";
 
 const String kApiUrl = kReleaseMode
-    ? "http://localhost:3000/api/mobile/"
-    : "http://localhost:3000/api/mobile/";
+    ? "https://korek-app.herokuapp.com"
+    : "https://korek-app.herokuapp.com";
 
 final Size size = MediaQuery.of(Get.find<NavigationService>().context()).size;
